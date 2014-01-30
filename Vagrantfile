@@ -17,7 +17,7 @@ Vagrant::Config.run do |config|
   config.vm.host_name = "www.rusa.org"
   config.vm.provision :shell, :path => "vagrant/bootstrap.sh"
 
-  config.vm.network :hostonly, "192.168.2.1"
+  config.vm.network :hostonly, "192.168.3.2"
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
