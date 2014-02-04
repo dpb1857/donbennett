@@ -7,7 +7,9 @@ Vagrant::Config.run do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "ubuntu1204"
+
+  # vagrant box add debian7.2 https://dl.dropboxusercontent.com/u/197673519/debian-7.2.0.box
+  config.vm.box = "debian7.2"
 
   config.vm.customize ["modifyvm", :id,
                        "--memory", 1 * 1024,
