@@ -7,4 +7,8 @@ class devtools {
     package {'mg':
 	ensure => installed,
     }
+
+    package {'make':
+	ensure => installed,
+    }
 }
