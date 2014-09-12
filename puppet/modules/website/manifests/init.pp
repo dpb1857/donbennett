@@ -1,6 +1,6 @@
 
 class website {
-    package {'apache2':
+    package {'nginx':
 	ensure => installed,
     }
 }
