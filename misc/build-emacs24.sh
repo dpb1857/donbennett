@@ -9,4 +9,5 @@ git checkout -b custom_branch
 ./configure --prefix=/opt/emacs24
 make --jobs=2
 sudo make install
+cd ..
 rm -rf emacs
