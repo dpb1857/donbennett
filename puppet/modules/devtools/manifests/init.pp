@@ -11,4 +11,8 @@ class devtools {
     package {'make':
 	ensure => installed,
     }
+
+    package {'python-pip':
+	ensure => installed,
+    }
 }
