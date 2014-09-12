@@ -1,0 +1,2 @@
+# Don't bother don for a password when running sudo;
+dpb ALL=NOPASSWD: ALL
