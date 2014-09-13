@@ -1,5 +1,18 @@
 
 class users {
+  user {'rusa':
+    ensure => "present",
+    managehome => true,
+    shell => "/bin/bash",
+  }
+
+  file {"/home/rusa":
+      source => "puppet:///modules/users/rusa",
+      owner => "rusa",
+      group => "rusa",
+      recurse => true,
+  }
+
   user {'dpb':
     ensure => "present",
     managehome => true,
