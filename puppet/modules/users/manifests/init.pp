@@ -13,6 +13,19 @@ class users {
       recurse => true,
   }
 
+  user {'git':
+    ensure => "present",
+    managehome => true,
+    shell => "/bin/bash",
+  }
+
+  file {"/home/git":
+      source => "puppet:///modules/users/git",
+      owner => "git",
+      group => "git",
+      recurse => true,
+  }
+
   user {'dpb':
     ensure => "present",
     managehome => true,
