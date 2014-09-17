@@ -4,6 +4,11 @@ rusa
 This repo contains the bootstrap and machine configuration for the rusa website.
 
 
+Machine Configuration
+=====================
+
+Machine configuration is managed by puppet.
+
 To configure the RUSA machine by hand after first booting:
 
     <as root>
@@ -20,6 +25,7 @@ To configure the RUSA machine by hand after first booting:
 
 At linode, this script is configured to run at first boot using their stack-scripts facility.
 You can see the full script in linode/stack-script.
+
 
 Admin Tasks
 ===========
@@ -48,7 +54,20 @@ For any modifications to the site static content, you must first checkout the si
     cd $HOME
     git clone git@localhost:site-static
 
-Create a branch to work in:
+Create a branch to work in
+--------------------------
 
     cd site-static
     git checkout -b MY_BRANCH
+
+See what the website looks like from your branch
+------------------------------------------------
+
+
+To run a webserver that shows what the site would look like based on the contents of the files you have checked out:
+
+    # Process the .it files and generate the .html files;
+    make
+
+    # Run a debug webserver; it should tell you the URL you can use to connect to it;
+    fab debug
