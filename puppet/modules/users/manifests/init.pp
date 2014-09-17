@@ -53,4 +53,17 @@ class users {
       group => "iphands",
       recurse => true,
   }
+
+  user {'lynne':
+    ensure => "present",
+    managehome => true,
+    shell => "/bin/bash",
+  }
+
+  file {"/home/lynne":
+      source => "puppet:///modules/users/lynne",
+      owner => "lynne",
+      group => "lynne",
+      recurse => true,
+  }
 }
