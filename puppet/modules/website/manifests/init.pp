@@ -4,6 +4,14 @@ class website {
 	ensure => installed,
     }
 
+    package {'uwsgi':
+	ensure => installed,
+    }
+
+    package {'uwsgi-plugin-cgi':
+	ensure => installed,
+    }
+
     file { '/usr/share/nginx':
         ensure => "directory",
         owner => "rusa",
@@ -16,4 +24,10 @@ class website {
         owner => "root",
         group => "root",
     }
+
+    file {'/etc/uwsgi/apps-enabled/rusa-cgi.ini':
+        source => "puppet:///modules/website/rusa-cgi.ini",
+        owner => "root",
+        group => "root",
+   }
 }
