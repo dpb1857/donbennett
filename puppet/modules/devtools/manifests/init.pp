@@ -12,6 +12,10 @@ class devtools {
 	ensure => installed,
     }
 
+    package {'python-gdbm':
+	ensure => installed,
+    }
+
     package {'python-pip':
 	ensure => installed,
     }
