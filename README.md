@@ -72,7 +72,7 @@ Checkout the static site from git
 For any modifications to the site static content, you must first checkout the site from git:
 
     cd $HOME
-    git clone git@localhost:site-static
+    git clone git@linode.rusa.org:site-static
 
 Create a branch to work in
 --------------------------
