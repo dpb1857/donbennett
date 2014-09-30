@@ -97,11 +97,11 @@ To run a webserver that shows what the site would look like based on the content
     # Run a debug webserver; it should tell you the port you can use to connect to it;
     fab debug
 
-Publish the branch to the staging server
-----------------------------------------
+Deploy the branch to the staging server
+---------------------------------------
 
     # Push the files to the staging area;
-    fab stage
+    fab deploy:hostname=linode.rusa.org
 
 This will push your current working tree to the staging server, where they will be visible at http://linode.rusa.org.
 
