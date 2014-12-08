@@ -1,5 +1,5 @@
 
-node /.*\.com/ {
+node /linode.rusa.org/ {
     include website
     include devtools
     include systools
@@ -7,7 +7,7 @@ node /.*\.com/ {
     include sudoers
 }
 
-node /.*\.org/ {
+node /www.rusa.org/ {
     include website
     include devtools
     include systools

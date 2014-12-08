@@ -16,7 +16,8 @@ class website {
         ensure => "directory",
         owner => "rusa",
         group => "rusa",
-        mode  => 755,
+        mode  => 0644,
+        recurse => true,
     }
 
     file { '/etc/nginx/sites-available/default':
