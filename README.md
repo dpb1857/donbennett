@@ -1,5 +1,5 @@
-rusa
-====
+donbennett
+==========
 
 This repo contains the bootstrap and machine configuration for donbennett.org.
 
