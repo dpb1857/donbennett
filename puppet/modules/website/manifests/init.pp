@@ -14,8 +14,8 @@ class website {
 
     file { '/usr/share/nginx':
         ensure => "directory",
-        owner => "rusa",
-        group => "rusa",
+        owner => "www-data",
+        group => "www-data",
         mode  => 0644,
         recurse => true,
     }
