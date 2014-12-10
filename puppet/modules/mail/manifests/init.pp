@@ -20,6 +20,18 @@ class mail {
         refreshonly => true,
     }
 
+    file {'/etc/postfix/helo_access':
+	source => "puppet:///modules/mail/etc/postfix/helo_access",
+	owner => "root",
+	group => "root",
+	mode => 0644,
+    }
+
+    exec { "/usr/sbin/postmap /etc/postfix/helo_access":
+	subscribe => File["/etc/postfix/helo_access"],
+	refreshonly => true,
+    }
+
     file { '/etc/postfix/main.cf':
 	source => "puppet:///modules/mail/etc/postfix/main.cf",
 	owner => "root",

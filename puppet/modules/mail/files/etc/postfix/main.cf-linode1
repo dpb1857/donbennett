@@ -1,0 +1,102 @@
+# See /usr/share/postfix/main.cf.dist for a commented, more complete version
+
+
+# Debian specific:  Specifying a file name will cause the first
+# line of that file to be used as the name.  The Debian default
+# is /etc/mailname.
+#myorigin = /etc/mailname
+
+smtpd_banner = $myhostname ESMTP $mail_name (Ubuntu)
+biff = no
+
+# appending .domain is the MUA's job.
+append_dot_mydomain = no
+
+# Uncomment the next line to generate "delayed mail" warnings
+#delay_warning_time = 4h
+
+readme_directory = /usr/share/doc/postfix
+
+# XXX dpb: SMTPD/TLS Configuration
+
+smtpd_tls_cert_file=/etc/ssl/certs/postfix.pem
+smtpd_tls_key_file=/etc/ssl/private/postfix.key
+smtpd_sasl_auth_enable = yes
+smtpd_tls_auth_only = yes
+smtpd_tls_security_level = may
+smtpd_sasl_security_options = noanonymous
+smtpd_helo_required = yes
+disable_vrfy_command = yes
+
+smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
+smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
+
+# See /usr/share/doc/postfix/TLS_README.gz in the postfix-doc package for
+# information on enabling SSL in the smtp client.
+
+relayhost =
+# relayhost = [mail.messagingengine.com]
+mynetworks = 127.0.0.0/8, 50.116.18.125, 23.239.27.37
+mailbox_size_limit = 0
+recipient_delimiter = +
+inet_interfaces = all
+
+# XXX dpb additions/modifications
+
+mydestination = linode.donbennett.org, castle.donbennett.org, donbennett.org, localhost, bikeaholics.org, rusa.org
+
+alias_maps = hash:/etc/aliases, hash:/var/lib/mailman/data/aliases
+alias_database = hash:/etc/aliases, hash:/var/lib/mailman/data/aliases
+virtual_alias_maps = hash:/etc/postfix/virtual, hash:/etc/postfix/virtual-rusa
+
+mailbox_command = procmail -a "$EXTENSION"
+
+# Use this transport map to work around this IP being listed as dynamic;
+transport_maps = hash:/etc/postfix/transport
+smtp_sasl_auth_enable = yes
+smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwords
+smtp_sasl_security_options =
+
+# New stuff added, hope to get gmail relay working!
+smtp_tls_CAfile=/etc/ssl/certs/Thawte_Premium_Server_CA.pem
+smtp_tls_cert_file=/etc/ssl/certs/postfix.pem
+smtp_tls_key_file=/etc/ssl/private/postfix.key
+smtp_use_tls = yes
+smtp_sasl_tls_security_options = noanonymous
+
+
+# smtpd_helo_restrictions = 
+# 	permit_mynetworks, 
+# 	check_helo_access hash:/etc/postfix/helo_access, 
+# 	warn_if_reject,
+# 	reject_non_fqdn_hostname,
+# 	warn_if_reject,
+# 	reject_invalid_hostname,
+# 	permit
+
+smtpd_helo_restrictions = 
+	permit_mynetworks,
+	check_helo_access hash:/etc/postfix/helo_access,
+	warn_if_reject,
+	reject_non_fqdn_hostname,
+	warn_if_reject,
+	reject_invalid_hostname,
+	permit
+
+# xxx dpb: looks like this is kicking out carl king, either due to non-reversable host for his mail, or
+# dns problems on linode...
+#
+# smtpd_client_restrictions = reject_unknown_client
+
+# Add check_policy_service inet:127.0.0.1:20002 for postgrey...
+
+smtpd_recipient_restrictions = 
+  permit_sasl_authenticated,
+  permit_mynetworks,
+  check_recipient_access hash:/etc/postfix/access,
+  reject_unauth_destination
+
+html_directory = /usr/share/doc/postfix/html
+
+# Allow larger messages than the default 10meg;
+message_size_limit = 50000000
