@@ -5,4 +5,5 @@ node /linode2.donbennett.org/ {
     include systools
     include users
     include sudoers
+    include mail
 }

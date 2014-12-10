@@ -8,10 +8,6 @@ class website {
 	ensure => installed,
     }
 
-    package {'uwsgi-plugin-cgi':
-	ensure => installed,
-    }
-
     file { '/usr/share/nginx':
         ensure => "directory",
         owner => "www-data",
@@ -25,10 +21,4 @@ class website {
         owner => "root",
         group => "root",
     }
-
-    file {'/etc/uwsgi/apps-enabled/rusa-cgi.ini':
-        source => "puppet:///modules/website/rusa-cgi.ini",
-        owner => "root",
-        group => "root",
-   }
 }
