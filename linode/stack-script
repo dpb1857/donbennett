@@ -1,9 +1,6 @@
 #!/bin/sh
 # <UDF name="hostname" Label="hostname for this host" example="testing.rusa.org" />
 
-exec > /tmp/stack-script.log 2>&1
-set -x
-
 # This sets the variable $IPADDR to the IP address the new Linode receives.
 IPADDR=$(/sbin/ifconfig eth0 | awk '/inet / { print $2 }' | sed 's/addr://')
 
@@ -22,9 +19,9 @@ apt-get install -y git puppet
 
 mkdir /opt
 cd /opt
-git clone https://github.com/RandonneursUSA/rusa.git
+git clone https://github.com/dpb1857/donbennett.git
 
-cd /opt/rusa/puppet
+cd /opt/donbennett/puppet
 ./run_puppet.sh
 
 # cd /opt/rusa/misc
