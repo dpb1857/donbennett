@@ -1,0 +1,5 @@
+# See man 5 aliases for format
+postmaster:    dpb
+root: dpb
+
+dpb: dpb1857@gmail.com
