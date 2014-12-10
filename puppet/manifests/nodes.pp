@@ -6,4 +6,5 @@ node /linode2.donbennett.org/ {
     include users
     include sudoers
     include mail
+    include tz
 }
