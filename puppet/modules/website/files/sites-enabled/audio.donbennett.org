@@ -1,0 +1,7 @@
+
+server {
+  server_name audio.donbennett.org;
+  listen 80;
+  root /home/web-sites/audio.donbennett.org/;
+  autoindex on;
+}

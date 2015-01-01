@@ -16,9 +16,10 @@ class website {
         recurse => true,
     }
 
-    file { '/etc/nginx/sites-available/default':
-        source => "puppet:///modules/website/default",
+    file { '/etc/nginx/sites-enabled':
+        source => "puppet:///modules/website/sites-enabled",
         owner => "root",
         group => "root",
+	recurse => true,
     }
 }
