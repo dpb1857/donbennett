@@ -1,0 +1,7 @@
+
+server {
+  server_name photos2.donbennett.org;
+  listen 80;
+  root /home/web-sites/photos.donbennett.org/;
+  autoindex on;
+}
