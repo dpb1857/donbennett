@@ -22,4 +22,12 @@ class website {
         group => "root",
 	recurse => true,
     }
+
+    file { '/etc/supervisor/conf.d/pbpresults.conf':
+        source => "puppet:///modules/website/supervisor-conf.d/pbpresults.conf",
+        owner => "root",
+        group => "root",
+        require => Package['supervisor'],
+    }
+
 }

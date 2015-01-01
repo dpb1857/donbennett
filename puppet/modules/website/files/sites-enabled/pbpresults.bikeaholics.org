@@ -1,0 +1,32 @@
+
+server {
+  server_name pbpresults.bikeaholics.org;
+  listen 80;
+  client_max_body_size 4G;
+  keepalive_timeout 5;
+
+  # path for static files
+  root /home/web-sites/pbpresults.bikeaholics.org/root;
+
+  location /pbp2011 {
+  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+  proxy_set_header Host $http_host;
+  proxy_redirect off;
+  proxy_pass   http://pbp_results_server;
+  }
+
+  location /histogram {
+  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+  proxy_set_header Host $http_host;
+  proxy_redirect off;
+  proxy_pass   http://pbp_results_server;
+  }
+
+  rewrite ^/$ /pbp2011/ redirect;
+}
+
+upstream pbp_results_server {
+    # server unix:/tmp/gunicorn.sock fail_timeout=0;
+    # For a TCP configuration:
+    server localhost:8100;
+}
