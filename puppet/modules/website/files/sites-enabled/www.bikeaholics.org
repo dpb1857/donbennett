@@ -1,0 +1,6 @@
+
+server {
+  server_name www.bikeaholics.org;
+  listen 80;
+  root /home/web-sites/www.bikeaholics.org/;
+}
