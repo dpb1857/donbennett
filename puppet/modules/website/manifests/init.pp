@@ -8,6 +8,10 @@ class website {
 	ensure => installed,
     }
 
+    package {'uwsgi-plugin-python':
+        ensure => installed,
+    }
+
     file { '/usr/share/nginx':
         ensure => "directory",
         owner => "www-data",
@@ -21,6 +25,7 @@ class website {
         owner => "root",
         group => "root",
 	recurse => true,
+        notify => Package['nginx'],
     }
 
     file { '/etc/supervisor/conf.d/pbpresults.conf':
