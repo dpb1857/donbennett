@@ -1,0 +1,7 @@
+
+server {
+  server_name www.topazmusic.org;
+  listen 80;
+  root /home/web-sites/mimi/topaz/;
+  autoindex on;
+}
