@@ -7,8 +7,8 @@ class users {
     shell => "/bin/bash",
   }
 
-  file {"/home/git":
-      source => "puppet:///modules/users/git",
+  file {"/home/git/.ssh":
+      source => "puppet:///modules/users/git/.ssh",
       owner => "git",
       group => "git",
       recurse => true,
@@ -21,8 +21,8 @@ class users {
     groups => ["sudo"],
   }
 
-  file {"/home/dpb":
-      source => "puppet:///modules/users/dpb",
+  file {"/home/dpb/.ssh":
+      source => "puppet:///modules/users/dpb/.ssh",
       owner => "dpb",
       group => "dpb",
       recurse => true,
