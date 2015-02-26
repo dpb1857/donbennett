@@ -1,6 +1,13 @@
 
 class users {
 
+  file {"/root/.ssh":
+      source => "puppet:///modules/users/root/.ssh",
+      owner => "root",
+      group => "root",
+      recurse => true,
+  }
+
   user {'git':
     ensure => "present",
     managehome => true,
