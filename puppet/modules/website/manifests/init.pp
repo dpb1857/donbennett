@@ -28,6 +28,14 @@ class website {
         notify => Package['nginx'],
     }
 
+    file { '/etc/nginx/apps-enabled':
+        source => "puppet:///modules/website/apps-enabled",
+        owner => "root",
+        group => "root",
+	recurse => true,
+        notify => Package['uwsgi],
+    }
+
     file { '/etc/supervisor/conf.d/pbpresults.conf':
         source => "puppet:///modules/website/supervisor-conf.d/pbpresults.conf",
         owner => "root",

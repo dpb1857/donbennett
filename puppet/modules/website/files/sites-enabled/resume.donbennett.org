@@ -1,0 +1,18 @@
+server {
+    listen 80;
+    server_name resume.donbennett.org;
+
+    location / {
+        uwsgi_pass localhost:9000;
+        include uwsgi_params;
+    }
+
+    location ~ ^/moin_static[0-9]+/(.*) {
+        alias /var/moin/static/$1;
+    }
+
+    location /favicon.ico {
+        alias /usr/share/moin/htdocs/favicon.ico;
+    }
+}
+	
