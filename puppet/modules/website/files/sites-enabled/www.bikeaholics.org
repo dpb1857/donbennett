@@ -1,5 +1,11 @@
 
 server {
+  listen 80;
+  server_name bikeaholics.org;
+  return 301 http://www.bikeaholics.org$request_uri;
+}
+
+server {
   server_name www.bikeaholics.org;
   listen 80;
   root /home/web-sites/www.bikeaholics.org/;
