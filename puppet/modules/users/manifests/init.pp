@@ -34,4 +34,18 @@ class users {
       group => "dpb",
       recurse => true,
   }
+
+  user {'deborah':
+    ensure => "present",
+    managehome => true,
+    shell => "/bin/bash",
+    groups => ["sudo"],
+  }
+
+  file {"/home/deborah/.ssh":
+      source => "puppet:///modules/users/deborah/.ssh",
+      owner => "deborah",
+      group => "deborah",
+      recurse => true,
+  }
 }
