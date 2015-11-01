@@ -33,7 +33,7 @@ class website {
         owner => "root",
         group => "root",
 	recurse => true,
-        notify => Package['uwsgi],
+        notify => Package['uwsgi'],
     }
 
     file { '/etc/supervisor/conf.d/pbpresults.conf':
