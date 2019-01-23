@@ -1,0 +1,6 @@
+
+server {
+  server_name www.troop4014pa.org;
+  listen 80;
+  root /home/web-sites/www.troop4014pa.org/;
+}
